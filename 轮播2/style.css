@@ -1,0 +1,12 @@
+.w{
+    height: 400px;
+    width: 400px;
+    overflow: hidden;
+}
+#i{
+    display: flex;
+    transition: all 0.5s;
+}
+.red{
+    color: red;
+}
