@@ -1,0 +1,27 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.w{
+    margin: 0 auto;
+    width: 400px;
+    height: 400px;
+    overflow: hidden;
+}
+#i{
+    position: relative;
+}
+#i>img{
+    position: absolute;
+    transition: all 1s;
+}
+.current{
+    left: 0;
+    z-index: 1;
+}
+.enter{
+    left: 100%;
+}
+.leave{
+    left:-100%;
+}
