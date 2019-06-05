@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+    <script type="text/javascript" src="https://www.imooc.com/static/lib/jquery/1.9.1/jquery.js"></script>
+</head>
+<body>
+   <div class="w">
+       <div id="i">
+           <img src="https://img0.pclady.com.cn/pclady/pet/choice/cat/1701/6.jpg" alt="",width='400px',height="400px">
+           <img src="https://neco-cat.com/wp-content/uploads/2017/07/cat005-1-400x400.jpg" alt="",width='400px',height="400px">
+           <img src="https://rasora-sapporo.com/wp/wp-content/uploads/2018/05/%E2%9B%84%EF%B8%8F%E6%9C%AD%E5%B9%8C%E5%BA%97%E2%9B%84%EF%B8%8F%E7%8C%AB%E5%86%99%E7%9C%9F%E9%A4%A8%F0%9F%90%88%F0%9F%90%BE_180523_0220-400x400.jpg" alt="",width='400px',height="400px">
+       </div>
+   </div>
+</body>
+<script>
+
+
+    // setTimeout(()=>{
+    //     $('#i>img:nth-child(1)').removeClass('current').addClass('leave')
+    //     $('#i>img:nth-child(2)').removeClass('enter').addClass('current')
+    //     $('#i>img:nth-child(2)').one('transitionend',()=>{
+    //         $('#i>img:nth-child(1)').removeClass('leave').addClass('enter')
+    //     })
+    // },3000)
+    // setTimeout(()=>{
+    //     $('#i>img:nth-child(2)').removeClass('current').addClass('leave')
+    //     $('#i>img:nth-child(3)').removeClass('enter').addClass('current')
+    //     $('#i>img:nth-child(3)').one('transitionend',()=>{
+    //         $('#i>img:nth-child(2)').removeClass('leave').addClass('enter')
+
+    //     })
+    // },6000)
+    // setTimeout(()=>{
+    //     $('#i>img:nth-child(3)').removeClass('current').addClass('leave')
+    //     $('#i>img:nth-child(1)').removeClass('enter').addClass('current')
+    //     $('#i>img:nth-child(1)').one('transitionend',()=>{
+    //         $('#i>img:nth-child(3)').removeClass('leave').addClass('enter')
+    //     })
+    // },9000)
+    
+    
+    let n
+    初始化()
+    setInterval(()=>{
+        makeLeave (geti(n)).one('transitionend',(e)=>{
+            makeEnter($(e.currentTarget))})
+        makeCurrent(geti(n+1))
+        n+=1
+    },3000)
+
+
+
+    function x(n){
+        if(n>3){
+            n=n%3
+            if(n===0){
+                n=3
+            }
+        }
+        return n
+    }
+
+    function 初始化(){
+        n = 1
+        $(`#i>img:nth-child(${n})`).addClass('current').siblings().addClass('enter')
+    }
+
+    function makeCurrent($node){
+        return $node.removeClass('enter').addClass('current') 
+    }
+    function makeLeave($node){
+        return $node.removeClass('current').addClass('leave')
+    }
+    function makeEnter($node){
+        return $node.removeClass('leave').addClass('enter')
+    }
+
+    function geti(n){
+        return $(`#i>img:nth-child(${x(n)})`)
+    }
+</script>
+</html>
