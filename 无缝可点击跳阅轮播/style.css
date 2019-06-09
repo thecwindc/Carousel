@@ -1,0 +1,17 @@
+.w{
+    width: 400px;
+    height: 400px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+#i{
+    display: flex;
+    transition: all 0.5s;
+}
+.red{
+    color: red;
+}
+#buttons {
+    margin: 0 auto;
+    width: 400px;
+}
