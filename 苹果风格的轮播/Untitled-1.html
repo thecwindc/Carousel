@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+    <script type="text/javascript" src="https://www.imooc.com/static/lib/jquery/1.9.1/jquery.js"></script>
+</head>
+<body>
+<div class="carousel">
+        <div class="w">
+                <div class="images">
+                    <img src="./i/1.jpg" alt="">
+                    <img src="./i/2.jpg" alt="">
+                    <img src="./i/3.jpg" alt="">
+                    <img src="./i/4.jpg" alt="">
+                </div>
+            </div>
+            <div class="buttons ">
+                <ul>
+                    <li class="act"><div class="ff"></div>
+                    <img src="./i/01.png" alt=""></li><li><div></div>
+                    <img src="./i/02.png" alt=""></li><li><div></div>
+                    <img src="./i/03.png" alt=""></li><li><div></div>
+                    <img src="./i/04.png" alt=""></li>
+                </ul>
+            </div>
+</div>
+</body>
+<script>
+    let $i = $('.images')
+    let $directions = $('.buttons>ul>li>div')
+    let $images = $('.buttons>ul>li')
+    let current = 0
+    setInterval(()=>{
+        next(current+1)
+        $images.eq(current).addClass('act').siblings('.act').removeClass('act')
+    },4000)
+
+    $('.buttons').on('click','li',function(e){
+        let $button = $(e.currentTarget)
+        let index = $button.index()
+        $button.addClass('act').siblings('.act').removeClass('act')
+        next(index)
+    })
+        function next(index){
+            if(index>$images.length-1){
+                index=0
+            }
+            for(var i=0;i<$images.length;i++){
+            if(i === index){
+                $directions.eq(index).addClass('ff')
+            }else{
+                $directions.eq(i).removeClass('ff')
+            }
+        }
+        $i.css({transform:`translateX(${-index*940}px)`})
+        current = index
+        }
+</script>
+</html>
